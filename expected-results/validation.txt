@@ -1,0 +1,5 @@
+VALID
+file: examples/completed-adoption-scope.md
+decisions: ALLOW=3 HUMAN_REVIEW=4 PROHIBIT=4
+headings: 8/8
+placeholders: 0
