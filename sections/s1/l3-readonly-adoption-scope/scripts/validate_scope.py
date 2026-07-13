@@ -15,7 +15,7 @@ REQUIRED_HEADINGS = (
     "仮説",
     "ReadOnly境界",
     "作業分類",
-    "人間の停止条件",
+    "AIが作業を中断して人間に確認する条件",
     "承認",
 )
 DECISION_CLASSES = ("ALLOW", "HUMAN_REVIEW", "PROHIBIT")

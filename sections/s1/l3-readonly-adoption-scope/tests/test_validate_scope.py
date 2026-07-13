@@ -25,6 +25,18 @@ class ValidateScopeTests(unittest.TestCase):
         errors = VALIDATOR.validate_text(text)
         self.assertTrue(any("unresolved placeholders" in error for error in errors))
 
+    def test_learner_markdown_uses_plain_human_confirmation_wording(self) -> None:
+        for relative_path in (
+            "README.md",
+            "templates/adoption-scope.md",
+            "examples/completed-adoption-scope.md",
+            "exercises/scenarios.md",
+        ):
+            text = (ROOT / relative_path).read_text(encoding="utf-8")
+            self.assertNotIn("人間の停止条件", text)
+            self.assertNotIn("人間へ渡す情報", text)
+            self.assertNotIn("人間へ引き継ぐ", text)
+
     def test_missing_decision_class_is_invalid(self) -> None:
         text = (ROOT / "examples" / "completed-adoption-scope.md").read_text(
             encoding="utf-8"
