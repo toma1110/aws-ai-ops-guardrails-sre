@@ -1,0 +1,43 @@
+{
+  "fixture_version": "1.0.0",
+  "local_only": true,
+  "description": "架空の接続前レビュー情報。AWS APIの実行結果ではない。",
+  "scenarios": [
+    {
+      "id": "CONNECTION-01",
+      "category": "CONNECTION",
+      "observation": "提供経路はmanaged endpointと記載されているが、許可する利用環境とnetwork経路のレビュー記録がない。",
+      "expected_decision": "REVIEW"
+    },
+    {
+      "id": "PERMISSIONS-01",
+      "category": "PERMISSIONS",
+      "observation": "専用identityとReadOnly方針はあるが、許可するAPI actionの一覧とsession分離の検証が未完了。",
+      "expected_decision": "BLOCK"
+    },
+    {
+      "id": "AUDIT-01",
+      "category": "AUDIT",
+      "observation": "actor、timestamp、API operation、session/correlation IDを記録する設計案がある。保持期間の承認待ち。",
+      "expected_decision": "REVIEW"
+    },
+    {
+      "id": "SENSITIVE_DATA-01",
+      "category": "SENSITIVE_DATA",
+      "observation": "credentialを入力しない規則はある。顧客識別子のmaskingとログ保持範囲が未決定。",
+      "expected_decision": "BLOCK"
+    },
+    {
+      "id": "PROMPT_INJECTION-01",
+      "category": "PROMPT_INJECTION",
+      "observation": "外部文書とtool出力を信頼できない入力として扱い、命令を実行せず人間へ確認する停止条件が定義済み。",
+      "expected_decision": "PASS"
+    },
+    {
+      "id": "COST-01",
+      "category": "COST",
+      "observation": "費用ownerは決まっているが、runtime、API、ログを含む予算上限と利用停止基準が未承認。",
+      "expected_decision": "REVIEW"
+    }
+  ]
+}

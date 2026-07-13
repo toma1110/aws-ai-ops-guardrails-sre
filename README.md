@@ -15,7 +15,10 @@
 - Lecture 1・2: 概念解説（リポジトリ教材なし）
 - [Lecture 3: ReadOnlyから始める安全境界](sections/s1/l3-readonly-adoption-scope/README.md) — AI運用導入スコープ表を作成し、ローカルで検証します。
 
-今後の演習教材も、対応するSectionの配下へ追加されます。
+### Section 2: 2つのAWS MCP提供経路を実画面と公式情報で比較する
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: 両方に共通する接続前リスク評価を作る](sections/s2/l3-mcp-preconnection-checklist/README.md) — 6分類のMCP接続前チェックリストをローカルfixtureで検証します。
 
 ## 動作環境
 

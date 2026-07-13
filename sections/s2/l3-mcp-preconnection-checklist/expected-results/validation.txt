@@ -1,0 +1,7 @@
+VALID
+checklist: examples/completed-mcp-preconnection-checklist.md
+fixture: fixtures/risk-scenarios.json
+categories: 6/6
+decisions: PASS=1 REVIEW=3 BLOCK=2
+overall: DO_NOT_CONNECT
+placeholders: 0
