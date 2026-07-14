@@ -1,0 +1,7 @@
+VALID
+classification: examples/completed-ai-work-classification.md
+fixture: fixtures/work-scenarios.json
+scenarios: 12/12
+decisions: ALLOW=4 HUMAN_REVIEW=4 PROHIBIT=4
+aws_connection: false
+placeholders: 0
