@@ -1,0 +1,12 @@
+VALID
+architecture: examples/completed-readonly-investigation-architecture.md
+fixture: fixtures/architecture-requirements.json
+scope: 6/6
+nodes: 9/9
+flows: 13/13
+flow_id_binding: standalone_preceding_comment
+permission_boundary: readonly
+audit_paths: cloudtrail+ai_execution_log
+existing_operations: human_decision_only
+aws_connection: false
+placeholders: 0

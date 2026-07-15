@@ -25,6 +25,11 @@
 - Lecture 1・2: 概念解説（リポジトリ教材なし）
 - [Lecture 3: AI作業分類表を完成させる](sections/s3/l3-ai-work-classification/README.md) — ReadOnly調査、禁止操作、人間確認が必要な判断を12件のローカルシナリオで分類します。
 
+### Section 4: ReadOnly導入の全体アーキテクチャ
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: ReadOnlyアーキテクチャ図を作る](sections/s4/l3-readonly-investigation-architecture/README.md) — 既存運用を置き換えないReadOnly調査補助アーキテクチャを作り、図とスコープ表の整合をローカルで検証します。
+
 ## 動作環境
 
 演習ごとに要件は異なります。現在収録しているローカル演習では、Python 3.10以上とMarkdownを編集できる環境を使用します。

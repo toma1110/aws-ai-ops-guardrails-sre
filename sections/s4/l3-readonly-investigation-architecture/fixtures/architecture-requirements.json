@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "required_nodes": {
+    "HUMAN": "人間の運用担当者",
+    "AI": "AI調査補助",
+    "MCP": "MCP接続レイヤー",
+    "IAM": "AI専用ReadOnly IAM境界",
+    "CW": "CloudWatch",
+    "CT": "CloudTrail",
+    "CFG": "AWS Config",
+    "AILOG": "AI実行ログ",
+    "OPS": "既存の障害対応・変更運用"
+  },
+  "required_flows": [
+    {"id": "F01", "from": "HUMAN", "to": "AI", "kind": "request", "label": "承認済み調査依頼"},
+    {"id": "F02", "from": "AI", "to": "MCP", "kind": "readonly_query", "label": "ReadOnly調査要求"},
+    {"id": "F03", "from": "MCP", "to": "IAM", "kind": "authorize", "label": "AI専用sessionを認可"},
+    {"id": "F04", "from": "IAM", "to": "CW", "kind": "readonly_query", "label": "メトリクスとログを参照"},
+    {"id": "F05", "from": "IAM", "to": "CT", "kind": "readonly_query", "label": "API監査記録を参照"},
+    {"id": "F06", "from": "IAM", "to": "CFG", "kind": "readonly_query", "label": "構成履歴を参照"},
+    {"id": "F07", "from": "CW", "to": "AI", "kind": "evidence", "label": "観測事実を返す"},
+    {"id": "F08", "from": "CT", "to": "AI", "kind": "evidence", "label": "監査事実を返す"},
+    {"id": "F09", "from": "CFG", "to": "AI", "kind": "evidence", "label": "構成事実を返す"},
+    {"id": "F10", "from": "MCP", "to": "CT", "kind": "audit", "label": "AWS APIアクセスを記録"},
+    {"id": "F11", "from": "AI", "to": "AILOG", "kind": "audit", "label": "入力・出力・根拠・実行IDを記録"},
+    {"id": "F12", "from": "AI", "to": "HUMAN", "kind": "recommendation", "label": "事実・仮説・不明点を提示"},
+    {"id": "F13", "from": "HUMAN", "to": "OPS", "kind": "human_decision", "label": "人間が既存手順で判断・実行"}
+  ],
+  "required_scope": {
+    "SC-01": "IN: AIは承認済みAWS情報源をReadOnlyで調査する",
+    "SC-02": "IN: AIは根拠付きの整理と報告下書きを作る",
+    "SC-03": "OUT: AIは変更・release・IAM変更・削除・自動復旧を実行しない",
+    "SC-04": "OUT: AIは本番判断や例外承認を確定しない",
+    "SC-05": "KEEP: 既存の障害対応・承認・変更・release手順を維持する",
+    "SC-06": "KEEP: 人間が最終判断と既存運用上の実行を担う"
+  },
+  "forbidden_ai_targets": ["OPS"],
+  "required_kinds": ["request", "readonly_query", "authorize", "evidence", "audit", "recommendation", "human_decision"]
+}
+
