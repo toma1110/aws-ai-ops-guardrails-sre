@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "policy_application": false,
+  "cases": [
+    {"id": "ALLOW-01", "action": "cloudwatch:GetMetricData", "expected": "ALLOW", "reason": "Approved metric evidence read"},
+    {"id": "ALLOW-02", "action": "logs:FilterLogEvents", "expected": "ALLOW", "reason": "Approved log evidence read"},
+    {"id": "ALLOW-03", "action": "cloudtrail:LookupEvents", "expected": "ALLOW", "reason": "Approved API audit lookup"},
+    {"id": "ALLOW-04", "action": "config:GetResourceConfigHistory", "expected": "ALLOW", "reason": "Approved configuration history read"},
+    {"id": "DENY-01", "action": "ec2:StopInstances", "expected": "EXPLICIT_DENY", "reason": "Production mutation is explicitly denied"},
+    {"id": "DENY-02", "action": "iam:CreatePolicyVersion", "expected": "EXPLICIT_DENY", "reason": "Every IAM action matches iam:* explicit Deny"},
+    {"id": "DENY-03", "action": "logs:DeleteLogGroup", "expected": "EXPLICIT_DENY", "reason": "Deletion is explicitly denied"},
+    {"id": "IMPLICIT-01", "action": "s3:GetObject", "expected": "IMPLICIT_DENY", "reason": "Unapproved read action is absent from Allow"},
+    {"id": "IMPLICIT-02", "action": "ec2:DescribeInstances", "expected": "IMPLICIT_DENY", "reason": "Unapproved discovery action is absent from Allow"}
+  ]
+}

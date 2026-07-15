@@ -1,0 +1,7 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "AllowApprovedInvestigationReads", "Effect": "Allow", "Action": ["cloudwatch:*"], "Resource": "*"},
+    {"Sid": "DenyProhibitedMutations", "Effect": "Deny", "Action": ["iam:*"], "Resource": "*"}
+  ]
+}

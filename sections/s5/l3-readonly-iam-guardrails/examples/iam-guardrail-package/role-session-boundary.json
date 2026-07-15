@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "policy_application": false,
+  "ai_role": {
+    "name": "AiReadonlyInvestigationRole",
+    "responsibilities": [
+      "Read only the approved observability evidence sources",
+      "Produce evidence-only investigation notes"
+    ]
+  },
+  "human_role": {
+    "name": "HumanOperatorRole",
+    "responsibilities": [
+      "Approve or execute operational changes",
+      "Own IAM modification and recovery decisions"
+    ]
+  },
+  "session": {
+    "required": true,
+    "name_format": "ai-{actor}-{ticket}-{run}",
+    "example": "ai-analyst-INC1234-run01",
+    "trace_fields": ["actor", "ticket", "run"]
+  },
+  "prohibited_for_ai": [
+    "share a human operator role",
+    "use an untracked session",
+    "store credentials in learner files",
+    "apply this policy to AWS"
+  ]
+}

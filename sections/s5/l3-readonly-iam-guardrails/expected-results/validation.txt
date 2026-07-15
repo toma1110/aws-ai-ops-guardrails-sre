@@ -1,0 +1,12 @@
+VALID
+policy: examples/iam-guardrail-package/iam-policy.json
+profile: examples/iam-guardrail-package/role-session-boundary.json
+cases: fixtures/evaluation-cases.json
+allow_actions: 11/11
+explicit_deny_actions: 7/7
+evaluation: 9/9
+decisions: ALLOW=4 EXPLICIT_DENY=3 IMPLICIT_DENY=2
+role_separation: true
+tracked_session: true
+aws_connection: false
+policy_application: false

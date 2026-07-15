@@ -1,0 +1,23 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowApprovedInvestigationReads",
+      "Effect": "Allow",
+      "Action": [
+        "cloudtrail:LookupEvents",
+        "cloudwatch:GetMetricData",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:ListMetrics",
+        "config:BatchGetResourceConfig",
+        "config:GetResourceConfigHistory",
+        "config:SelectResourceConfig",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:FilterLogEvents",
+        "logs:GetLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

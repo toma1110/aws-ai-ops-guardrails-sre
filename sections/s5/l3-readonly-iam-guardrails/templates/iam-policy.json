@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowApprovedInvestigationReads",
+      "Effect": "Allow",
+      "Action": ["REPLACE_WITH_APPROVED_READ_ACTIONS"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyProhibitedMutations",
+      "Effect": "Deny",
+      "Action": ["REPLACE_WITH_PROHIBITED_ACTIONS"],
+      "Resource": "*"
+    }
+  ]
+}

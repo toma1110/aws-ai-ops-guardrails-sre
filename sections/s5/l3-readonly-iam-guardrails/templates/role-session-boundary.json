@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "policy_application": false,
+  "ai_role": {"name": "REPLACE_AI_ROLE", "responsibilities": []},
+  "human_role": {"name": "REPLACE_HUMAN_ROLE", "responsibilities": []},
+  "session": {
+    "required": true,
+    "name_format": "ai-{actor}-{ticket}-{run}",
+    "example": "REPLACE_SESSION_EXAMPLE",
+    "trace_fields": ["actor", "ticket", "run"]
+  },
+  "prohibited_for_ai": []
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "policy_application": false,
+  "required_policy_version": "2012-10-17",
+  "required_allow_actions": [
+    "cloudtrail:LookupEvents",
+    "cloudwatch:GetMetricData",
+    "cloudwatch:GetMetricStatistics",
+    "cloudwatch:ListMetrics",
+    "config:BatchGetResourceConfig",
+    "config:GetResourceConfigHistory",
+    "config:SelectResourceConfig",
+    "logs:DescribeLogGroups",
+    "logs:DescribeLogStreams",
+    "logs:FilterLogEvents",
+    "logs:GetLogEvents"
+  ],
+  "required_explicit_deny_actions": [
+    "cloudwatch:PutMetricAlarm",
+    "config:PutConfigurationRecorder",
+    "ec2:StartInstances",
+    "ec2:StopInstances",
+    "ec2:TerminateInstances",
+    "iam:*",
+    "logs:DeleteLogGroup"
+  ],
+  "required_session_fields": ["actor", "ticket", "run"],
+  "session_name_pattern": "^ai-[a-z0-9-]+-[A-Z]+[0-9]+-run[0-9]+$"
+}
