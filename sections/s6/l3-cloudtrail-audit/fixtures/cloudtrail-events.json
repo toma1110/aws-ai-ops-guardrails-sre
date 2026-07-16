@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "events": [
+    {
+      "eventVersion": "1.10",
+      "eventID": "11111111-1111-4111-8111-111111111111",
+      "eventTime": "2026-07-17T00:01:00Z",
+      "eventSource": "cloudwatch.amazonaws.com",
+      "eventName": "GetMetricData",
+      "awsRegion": "ap-northeast-1",
+      "sourceIPAddress": "198.51.100.10",
+      "userAgent": "synthetic-ai-audit-client/1.0",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "SYNTHETICROLE:ai-analyst-INC2042-run06",
+        "arn": "arn:aws:sts::000000000000:assumed-role/SyntheticReadOnlyRole/ai-analyst-INC2042-run06",
+        "accountId": "000000000000",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "SYNTHETICROLE",
+            "arn": "arn:aws:iam::000000000000:role/SyntheticReadOnlyRole",
+            "accountId": "000000000000",
+            "userName": "SyntheticReadOnlyRole"
+          }
+        }
+      },
+      "requestParameters": {
+        "metricDataQueries": ["synthetic-cpu-average"],
+        "startTime": "2026-07-16T23:55:00Z",
+        "endTime": "2026-07-17T00:00:00Z"
+      }
+    },
+    {
+      "eventVersion": "1.10",
+      "eventID": "22222222-2222-4222-8222-222222222222",
+      "eventTime": "2026-07-17T00:02:00Z",
+      "eventSource": "logs.amazonaws.com",
+      "eventName": "FilterLogEvents",
+      "awsRegion": "ap-northeast-1",
+      "sourceIPAddress": "198.51.100.10",
+      "userAgent": "synthetic-ai-audit-client/1.0",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "SYNTHETICROLE:ai-analyst-INC2042-run06",
+        "arn": "arn:aws:sts::000000000000:assumed-role/SyntheticReadOnlyRole/ai-analyst-INC2042-run06",
+        "accountId": "000000000000",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "SYNTHETICROLE",
+            "arn": "arn:aws:iam::000000000000:role/SyntheticReadOnlyRole",
+            "accountId": "000000000000",
+            "userName": "SyntheticReadOnlyRole"
+          }
+        }
+      },
+      "requestParameters": {
+        "logGroupName": "/synthetic/service/api",
+        "filterPattern": "ERROR",
+        "limit": 50
+      },
+      "errorCode": "AccessDenied",
+      "errorMessage": "Synthetic denial: the fixture contains no real resource or permission result."
+    },
+    {
+      "eventVersion": "1.10",
+      "eventID": "33333333-3333-4333-8333-333333333333",
+      "eventTime": "2026-07-17T00:03:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "ap-northeast-1",
+      "sourceIPAddress": "198.51.100.20",
+      "userAgent": "synthetic-human-client/1.0",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "SYNTHETICHUMAN:human-operator-INC9999",
+        "arn": "arn:aws:sts::000000000000:assumed-role/SyntheticHumanRole/human-operator-INC9999",
+        "accountId": "000000000000",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "SYNTHETICHUMAN",
+            "arn": "arn:aws:iam::000000000000:role/SyntheticHumanRole",
+            "accountId": "000000000000",
+            "userName": "SyntheticHumanRole"
+          }
+        }
+      },
+      "requestParameters": {"maxResults": 10}
+    },
+    {
+      "eventVersion": "1.10",
+      "eventID": "44444444-4444-4444-8444-444444444444",
+      "eventTime": "2026-07-17T01:01:00Z",
+      "eventSource": "config.amazonaws.com",
+      "eventName": "GetResourceConfigHistory",
+      "awsRegion": "ap-northeast-1",
+      "sourceIPAddress": "198.51.100.11",
+      "userAgent": "synthetic-ai-audit-client/1.0",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "SYNTHETICROLE:ai-analyst-INC2043-run01",
+        "arn": "arn:aws:sts::000000000000:assumed-role/SyntheticReadOnlyRole/ai-analyst-INC2043-run01",
+        "accountId": "000000000000",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "SYNTHETICROLE",
+            "arn": "arn:aws:iam::000000000000:role/SyntheticReadOnlyRole",
+            "accountId": "000000000000",
+            "userName": "SyntheticReadOnlyRole"
+          }
+        }
+      },
+      "requestParameters": {
+        "resourceType": "AWS::EC2::Instance",
+        "resourceId": "i-synthetic000000000"
+      }
+    }
+  ]
+}

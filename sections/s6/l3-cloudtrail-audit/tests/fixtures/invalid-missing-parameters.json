@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "events": [{
+    "eventID":"99999999-9999-4999-8999-999999999999",
+    "eventTime":"2026-07-17T00:01:00Z",
+    "eventSource":"cloudwatch.amazonaws.com",
+    "eventName":"GetMetricData",
+    "userIdentity":{"type":"AssumedRole","principalId":"SYNTHETICROLE:ai-analyst-INC2042-run06","arn":"arn:aws:sts::000000000000:assumed-role/SyntheticReadOnlyRole/ai-analyst-INC2042-run06","sessionContext":{"sessionIssuer":{"userName":"SyntheticReadOnlyRole"}}}
+  }]
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "executions": [
+    {"execution_id":"AI-EXEC-006","session":"ai-analyst-INC2042-run06","ticket_id":"INC2042","window_start":"2026-07-17T00:00:00Z","window_end":"2026-07-17T00:05:00Z"},
+    {"execution_id":"AI-EXEC-099","session":"ai-analyst-INC2042-run06","ticket_id":"INC9999","window_start":"2026-07-17T00:04:00Z","window_end":"2026-07-17T00:06:00Z"}
+  ]
+}
