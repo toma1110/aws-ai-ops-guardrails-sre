@@ -1,0 +1,9 @@
+VALID
+incident_id: INC-2077
+anomaly_start: 2026-07-17T00:03:30Z
+facts: 7
+hypotheses: 2
+unknowns: 2
+human_decisions: 2
+expected_comparison: PASS
+aws_connection: false

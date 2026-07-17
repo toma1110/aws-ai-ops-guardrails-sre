@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "incident_id": "INC-BAD",
+  "window_start": "2026-07-17T00:00:00Z",
+  "window_end": "2026-07-17T00:10:00Z",
+  "metrics": [{"evidence_id":"DUP-001","timestamp":"2026-07-17T00:01:00Z"}],
+  "logs": [{"evidence_id":"DUP-001","timestamp":"2026-07-17T00:02:00Z"}],
+  "cloudtrail_events": [{"evidence_id":"CT-X","event_time":"2026-07-17T00:03:00Z"}],
+  "config_changes": [{"evidence_id":"CFG-X","capture_time":"2026-07-17T00:04:00Z"}],
+  "resource_states": [{"evidence_id":"STATE-X","timestamp":"2026-07-17T00:05:00Z"}]
+}

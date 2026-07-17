@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "incident_id": "INC-2077",
+  "anomaly_start": "2026-07-17T00:03:30Z",
+  "facts": [
+    {"id":"FACT-001","time":"2026-07-17T00:02:00Z","statement":"ALB target group attribute change was recorded for ticket CHG-7701.","evidence_ids":["CT-001"]},
+    {"id":"FACT-002","time":"2026-07-17T00:02:10Z","statement":"Config history records deregistration_delay.timeout_seconds changing from 300 to 30.","evidence_ids":["CFG-001"]},
+    {"id":"FACT-003","time":"2026-07-17T00:03:30Z","statement":"Application log recorded an ERROR for a database-response timeout.","evidence_ids":["LOG-001"]},
+    {"id":"FACT-004","time":"2026-07-17T00:04:00Z","statement":"ALB target 5XX count crossed its local threshold: 37 >= 10.","evidence_ids":["MET-002"]},
+    {"id":"FACT-005","time":"2026-07-17T00:04:00Z","statement":"ALB unhealthy-host count crossed its local threshold: 1 >= 1.","evidence_ids":["MET-003","ALB-001"]},
+    {"id":"FACT-006","time":"2026-07-17T00:04:00Z","statement":"EC2 status checks passed and CPUUtilization was 22.4 Percent.","evidence_ids":["EC2-001","MET-004"]},
+    {"id":"FACT-007","time":"2026-07-17T00:04:00Z","statement":"RDS state was available and DatabaseConnections was 18 Count.","evidence_ids":["RDS-001","MET-005"]}
+  ],
+  "hypotheses": [
+    {"id":"HYP-001","statement":"The target-group attribute change may have contributed to the unhealthy target and 5XX increase.","supporting_evidence_ids":["CT-001","CFG-001","MET-002","MET-003","ALB-001"],"disconfirming_evidence_needed":"Compare request/target traces and test the previous value in an approved non-production environment."},
+    {"id":"HYP-002","statement":"A transient database-response delay may have contributed to the application error, but current RDS state and connection count do not establish a database fault.","supporting_evidence_ids":["LOG-001","RDS-001","MET-005"],"disconfirming_evidence_needed":"Review approved RDS latency, load, and database logs for the same request window."}
+  ],
+  "unknowns": [
+    {"id":"UNK-001","question":"Did the attribute change cause the unhealthy target and 5XX increase?","needed_evidence":"Request/target traces or an approved reproduction."},
+    {"id":"UNK-002","question":"Was there a database latency or query event during req-synthetic-77?","needed_evidence":"RDS latency/load metrics and database logs that are not present in this fixture."}
+  ],
+  "human_decisions": [
+    {"id":"HUM-001","decision":"Decide whether to roll back the target-group attribute after change-owner and impact review.","reason":"Rollback changes production state and cannot be authorized by this local investigation."},
+    {"id":"HUM-002","decision":"Approve access to additional request traces or database logs if needed.","reason":"The fixture does not establish authorization, sensitivity, or retention boundaries for production data."}
+  ]
+}

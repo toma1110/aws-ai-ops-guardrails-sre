@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "local_only": true,
+  "aws_connection": false,
+  "credentials_required": false,
+  "incident_id": "INC-2077",
+  "window_start": "2026-07-17T00:00:00Z",
+  "window_end": "2026-07-17T00:10:00Z",
+  "metric_thresholds": {
+    "AWS/ApplicationELB:HTTPCode_Target_5XX_Count": 10,
+    "AWS/ApplicationELB:UnHealthyHostCount": 1
+  },
+  "metrics": [
+    {"evidence_id":"MET-001","timestamp":"2026-07-17T00:00:00Z","namespace":"AWS/ApplicationELB","metric":"HTTPCode_Target_5XX_Count","resource":"targetgroup/synthetic-web/0001","value":0,"unit":"Count"},
+    {"evidence_id":"MET-002","timestamp":"2026-07-17T00:04:00Z","namespace":"AWS/ApplicationELB","metric":"HTTPCode_Target_5XX_Count","resource":"targetgroup/synthetic-web/0001","value":37,"unit":"Count"},
+    {"evidence_id":"MET-003","timestamp":"2026-07-17T00:04:00Z","namespace":"AWS/ApplicationELB","metric":"UnHealthyHostCount","resource":"targetgroup/synthetic-web/0001","value":1,"unit":"Count"},
+    {"evidence_id":"MET-004","timestamp":"2026-07-17T00:04:00Z","namespace":"AWS/EC2","metric":"CPUUtilization","resource":"i-synthetic0001","value":22.4,"unit":"Percent"},
+    {"evidence_id":"MET-005","timestamp":"2026-07-17T00:04:00Z","namespace":"AWS/RDS","metric":"DatabaseConnections","resource":"db-synthetic-01","value":18,"unit":"Count"}
+  ],
+  "logs": [
+    {"evidence_id":"LOG-001","timestamp":"2026-07-17T00:03:30Z","log_group":"/synthetic/app/web","resource":"i-synthetic0001","level":"ERROR","message":"upstream request timed out while waiting for database response","correlation_id":"req-synthetic-77"},
+    {"evidence_id":"LOG-002","timestamp":"2026-07-17T00:06:00Z","log_group":"/synthetic/app/web","resource":"i-synthetic0001","level":"INFO","message":"health check request completed","correlation_id":"req-synthetic-88"}
+  ],
+  "cloudtrail_events": [
+    {"evidence_id":"CT-001","event_time":"2026-07-17T00:02:00Z","event_id":"77777777-7777-4777-8777-777777777777","event_source":"elasticloadbalancing.amazonaws.com","event_name":"ModifyTargetGroupAttributes","principal":"arn:aws:sts::000000000000:assumed-role/SyntheticDeployRole/change-7701","resource":"targetgroup/synthetic-web/0001","ticket_id":"CHG-7701","request_parameters":{"deregistration_delay.timeout_seconds":"30"},"error":null}
+  ],
+  "config_changes": [
+    {"evidence_id":"CFG-001","capture_time":"2026-07-17T00:02:10Z","resource_type":"AWS::ElasticLoadBalancingV2::TargetGroup","resource":"targetgroup/synthetic-web/0001","changed_field":"deregistration_delay.timeout_seconds","before":"300","after":"30","related_event_id":"77777777-7777-4777-8777-777777777777"}
+  ],
+  "resource_states": [
+    {"evidence_id":"ALB-001","timestamp":"2026-07-17T00:04:00Z","service":"ALB","resource":"targetgroup/synthetic-web/0001","state":"one-target-unhealthy"},
+    {"evidence_id":"EC2-001","timestamp":"2026-07-17T00:04:00Z","service":"EC2","resource":"i-synthetic0001","state":"status-checks-passed"},
+    {"evidence_id":"RDS-001","timestamp":"2026-07-17T00:04:00Z","service":"RDS","resource":"db-synthetic-01","state":"available"}
+  ]
+}

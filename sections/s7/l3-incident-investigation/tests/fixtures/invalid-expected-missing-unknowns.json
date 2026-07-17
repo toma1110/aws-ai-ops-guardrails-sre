@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "incident_id": "INC-2077",
+  "anomaly_start": "2026-07-17T00:03:30Z",
+  "facts": [{"id":"FACT-X","time":"2026-07-17T00:04:00Z","statement":"Observed value.","evidence_ids":["MET-002"]}],
+  "hypotheses": [{"id":"HYP-X","statement":"Possible explanation.","supporting_evidence_ids":["MET-002"],"disconfirming_evidence_needed":"More evidence."}],
+  "unknowns": [],
+  "human_decisions": [{"id":"HUM-X","decision":"Decide action.","reason":"Human authorization required."}]
+}
