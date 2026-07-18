@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "log_role": "ai_execution",
+  "execution_id": "exec-20260718-invalid-06",
+  "session_id": "session-20260718-h8",
+  "ticket_id": "SEC-423",
+  "occurred_at": "2026-07-18T07:00:00Z",
+  "retention": {"retention_days": 30, "expires_at": "2026-08-17T07:00:00Z"},
+  "data_handling": {"masking_applied": true, "masked_fields": ["input.customer_email"], "strategy": "redact"},
+  "external_send": {"allowed": false, "destination": "none", "approval_ticket": null},
+  "input": {"customer_email": "alice@example.com"},
+  "output": {"summary": "fixture"},
+  "decision_material": ["fixture-06"],
+  "cloudtrail_correlation": {"event_ids": []}
+}

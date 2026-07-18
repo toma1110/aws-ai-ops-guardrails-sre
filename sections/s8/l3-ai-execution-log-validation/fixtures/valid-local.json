@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "log_role": "ai_execution",
+  "execution_id": "exec-20260718-local-01",
+  "session_id": "session-20260718-a1",
+  "ticket_id": "OPS-208",
+  "occurred_at": "2026-07-18T00:00:00Z",
+  "retention": {"retention_days": 30, "expires_at": "2026-08-17T00:00:00Z"},
+  "data_handling": {"masking_applied": true, "masked_fields": ["input.customer_email"], "strategy": "redact"},
+  "external_send": {"allowed": false, "destination": "none", "approval_ticket": null},
+  "input": {"request": "Summarize the supplied synthetic event", "customer_email": "[REDACTED]"},
+  "output": {"summary": "The synthetic request was read only"},
+  "decision_material": ["synthetic-event-01", "runbook-local-01"],
+  "cloudtrail_correlation": {"event_ids": ["ct-event-20260718-01"]}
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/ai-execution-log.schema.json",
+  "title": "AI execution log",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "log_role",
+    "execution_id",
+    "session_id",
+    "ticket_id",
+    "occurred_at",
+    "retention",
+    "data_handling",
+    "external_send",
+    "input",
+    "output",
+    "decision_material",
+    "cloudtrail_correlation"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "log_role": {"const": "ai_execution"},
+    "execution_id": {"type": "string", "pattern": "^exec-[a-z0-9-]{8,64}$"},
+    "session_id": {"type": "string", "pattern": "^session-[a-z0-9-]{8,64}$"},
+    "ticket_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$"},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["retention_days", "expires_at"],
+      "properties": {
+        "retention_days": {"type": "integer", "minimum": 1, "maximum": 365},
+        "expires_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "data_handling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["masking_applied", "masked_fields", "strategy"],
+      "properties": {
+        "masking_applied": {"const": true},
+        "masked_fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(input|output)(\\.[A-Za-z_][A-Za-z0-9_]*)+$"
+          }
+        },
+        "strategy": {"enum": ["redact", "tokenize", "hash"]}
+      }
+    },
+    "external_send": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "destination", "approval_ticket"],
+      "properties": {
+        "allowed": {"type": "boolean"},
+        "destination": {"enum": ["none", "approved-service"]},
+        "approval_ticket": {"type": ["string", "null"]}
+      }
+    },
+    "input": {"type": "object"},
+    "output": {"type": "object"},
+    "decision_material": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "cloudtrail_correlation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_ids"],
+      "properties": {
+        "event_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^ct-[a-z0-9-]{8,64}$"}
+        }
+      }
+    }
+  }
+}

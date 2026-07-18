@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "log_role": "ai_execution",
+  "execution_id": "exec-20260718-invalid-02",
+  "session_id": "session-20260718-d4",
+  "ticket_id": "OPS-209",
+  "occurred_at": "2026-07-18T03:00:00Z",
+  "retention": {"retention_days": 730, "expires_at": "2028-07-17T03:00:00Z"},
+  "data_handling": {"masking_applied": true, "masked_fields": ["input.operator"], "strategy": "redact"},
+  "external_send": {"allowed": false, "destination": "none", "approval_ticket": null},
+  "input": {"operator": "[REDACTED]"},
+  "output": {"summary": "fixture"},
+  "decision_material": ["fixture-02"],
+  "cloudtrail_correlation": {"event_ids": []}
+}

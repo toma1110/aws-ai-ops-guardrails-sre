@@ -1,0 +1,11 @@
+{
+  "invalid-external-send.json": {"valid": false, "reason_codes": ["external_send_unapproved"]},
+  "invalid-masking.json": {"valid": false, "reason_codes": ["masking_not_applied", "schema_validation_failed"]},
+  "invalid-masking-path.json": {"valid": false, "reason_codes": ["masking_path_missing"]},
+  "invalid-masking-plaintext.json": {"valid": false, "reason_codes": ["masking_value_invalid"]},
+  "invalid-missing-ticket.json": {"valid": false, "reason_codes": ["missing_correlation_field", "schema_validation_failed"]},
+  "invalid-retention.json": {"valid": false, "reason_codes": ["retention_out_of_range", "schema_validation_failed"]},
+  "invalid-sensitive-data.json": {"valid": false, "reason_codes": ["masking_value_invalid", "sensitive_data_detected"]},
+  "valid-approved-external.json": {"valid": true, "reason_codes": []},
+  "valid-local.json": {"valid": true, "reason_codes": []}
+}

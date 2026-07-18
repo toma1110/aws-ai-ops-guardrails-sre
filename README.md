@@ -45,6 +45,11 @@
 - Lecture 1・2: 概念解説（リポジトリ教材なし）
 - [Lecture 3: 根拠付き障害調査レポートを作る](sections/s7/l3-incident-investigation/README.md) — 合成メトリクス、ログ、変更履歴、resource状態をUTC時系列で関連付け、事実・仮説・不明点・人間判断を分離した調査結果をローカルで検証します。
 
+### Section 8: ログ保存と説明責任
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: AI実行ログJSONを検証する](sections/s8/l3-ai-execution-log-validation/README.md) — CloudTrail API監査とAI実行ログの役割を分け、相関情報、保持、マスキング、外部送信境界を9件のローカルfixtureと11件のunit testで検証します。
+
 ## 動作環境
 
 演習ごとに要件は異なります。現在収録しているローカル演習では、Python 3.10以上とMarkdownを編集できる環境を使用します。

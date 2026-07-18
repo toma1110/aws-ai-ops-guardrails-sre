@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "log_role": "ai_execution",
+  "execution_id": "exec-20260718-approved-02",
+  "session_id": "session-20260718-b2",
+  "ticket_id": "SEC-421",
+  "occurred_at": "2026-07-18T01:00:00Z",
+  "retention": {"retention_days": 7, "expires_at": "2026-07-25T01:00:00Z"},
+  "data_handling": {"masking_applied": true, "masked_fields": ["input.operator"], "strategy": "tokenize"},
+  "external_send": {"allowed": true, "destination": "approved-service", "approval_ticket": "SEC-421"},
+  "input": {"request": "Classify the supplied local fixture", "operator": "token-operator-001"},
+  "output": {"classification": "review"},
+  "decision_material": ["local-policy-v1"],
+  "cloudtrail_correlation": {"event_ids": []}
+}
