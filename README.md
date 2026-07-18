@@ -30,6 +30,21 @@
 - Lecture 1・2: 概念解説（リポジトリ教材なし）
 - [Lecture 3: ReadOnlyアーキテクチャ図を作る](sections/s4/l3-readonly-investigation-architecture/README.md) — 既存運用を置き換えないReadOnly調査補助アーキテクチャを作り、図とスコープ表の整合をローカルで検証します。
 
+### Section 5: IAMガードレール設計
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: ReadOnly IAMポリシー例を検証する](sections/s5/l3-readonly-iam-guardrails/README.md) — AI専用roleと追跡可能なsessionを分離し、最小権限のAllowと明示Denyを含むIAM policy fixtureをAWSへ適用せずローカルで検証します。
+
+### Section 6: CloudTrailでAIのAWSアクセスを追跡する
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: 監査クエリとチェックリストを試す](sections/s6/l3-cloudtrail-audit/README.md) — 合成CloudTrail eventをAI実行ID・session・ticket IDへ相関し、5つの監査項目と期待結果をローカルで検証します。
+
+### Section 7: CloudWatch・Logs・Configを使った調査補助
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: 根拠付き障害調査レポートを作る](sections/s7/l3-incident-investigation/README.md) — 合成メトリクス、ログ、変更履歴、resource状態をUTC時系列で関連付け、事実・仮説・不明点・人間判断を分離した調査結果をローカルで検証します。
+
 ## 動作環境
 
 演習ごとに要件は異なります。現在収録しているローカル演習では、Python 3.10以上とMarkdownを編集できる環境を使用します。
