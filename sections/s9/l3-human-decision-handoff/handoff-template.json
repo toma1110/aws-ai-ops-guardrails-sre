@@ -1,0 +1,36 @@
+{
+  "scenario_id": "replace-with-unique-id",
+  "summary": "判断対象を1文で記述する",
+  "conditions": {
+    "production_impact": "none",
+    "cost_impact": "none",
+    "exception_required": false,
+    "permission_change_required": false,
+    "rollback": "not_required"
+  },
+  "evidence": [
+    {
+      "source": "synthetic observation source",
+      "observation": "確認できた事実だけを記述する"
+    }
+  ],
+  "unknowns": [
+    "判断前に確認が必要な不明点"
+  ],
+  "options": [
+    {
+      "id": "wait",
+      "description": "判断が揃うまで停止する",
+      "tradeoff": "復旧または調査が遅れる"
+    },
+    {
+      "id": "readonly-only",
+      "description": "承認済みReadOnly調査だけを続ける",
+      "tradeoff": "変更による復旧は行わない"
+    }
+  ],
+  "next_actor": {
+    "role": "system owner",
+    "action": "根拠と不明点を確認し、選択肢を判断する"
+  }
+}

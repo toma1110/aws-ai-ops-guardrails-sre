@@ -1,0 +1,9 @@
+{
+  "fixture-cost-unknown.json": {"decision": "NEED_HUMAN_DECISION", "reason_codes": ["cost_impact_unknown"]},
+  "fixture-exception.json": {"decision": "NEED_HUMAN_DECISION", "reason_codes": ["exception_requires_approval"]},
+  "fixture-multiple-boundaries.json": {"decision": "NEED_HUMAN_DECISION", "reason_codes": ["production_impact_possible", "cost_exceeds_approved_limit", "exception_requires_approval", "permission_change_requires_approval", "rollback_unverified"]},
+  "fixture-permission-change.json": {"decision": "NEED_HUMAN_DECISION", "reason_codes": ["permission_change_requires_approval"]},
+  "fixture-production-impact.json": {"decision": "NEED_HUMAN_DECISION", "reason_codes": ["production_impact_confirmed"]},
+  "fixture-rollback-missing.json": {"decision": "NEED_HUMAN_DECISION", "reason_codes": ["production_impact_possible", "rollback_missing"]},
+  "fixture-safe-readonly.json": {"decision": "CONTINUE_READONLY", "reason_codes": []}
+}

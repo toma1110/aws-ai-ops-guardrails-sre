@@ -1,0 +1,12 @@
+{
+  "scenario_id": "safe-readonly",
+  "summary": "承認済みlocal fixtureを読むだけの調査",
+  "conditions": {"production_impact": "none", "cost_impact": "none", "exception_required": false, "permission_change_required": false, "rollback": "not_required"},
+  "evidence": [{"source": "synthetic task definition", "observation": "no external connection, write, cost, exception, permission change, or rollback-requiring action"}],
+  "unknowns": [],
+  "options": [
+    {"id": "continue", "description": "local ReadOnly検証を続ける", "tradeoff": "実環境の状態は証明しない"},
+    {"id": "stop-voluntarily", "description": "追加判断が必要なら任意に停止する", "tradeoff": "local検証も進まない"}
+  ],
+  "next_actor": {"role": "SRE investigator", "action": "local ReadOnly検証だけを続け、境界変化時は再評価する"}
+}

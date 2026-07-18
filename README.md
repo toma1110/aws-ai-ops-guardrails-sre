@@ -50,6 +50,11 @@
 - Lecture 1・2: 概念解説（リポジトリ教材なし）
 - [Lecture 3: AI実行ログJSONを検証する](sections/s8/l3-ai-execution-log-validation/README.md) — CloudTrail API監査とAI実行ログの役割を分け、相関情報、保持、マスキング、外部送信境界を9件のローカルfixtureと11件のunit testで検証します。
 
+### Section 9: 人間判断と停止条件
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: 停止条件と引き継ぎを試す](sections/s9/l3-human-decision-handoff/README.md) — 本番影響、費用、例外、権限変更、rollbackの境界を7件のローカルfixtureで判定し、`NEED_HUMAN_DECISION` の引き継ぎを検証します。
+
 ## 動作環境
 
 演習ごとに要件は異なります。現在収録しているローカル演習では、Python 3.10以上とMarkdownを編集できる環境を使用します。

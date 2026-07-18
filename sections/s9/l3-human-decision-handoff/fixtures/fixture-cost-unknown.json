@@ -1,0 +1,12 @@
+{
+  "scenario_id": "cost-unknown",
+  "summary": "追加queryの費用上限が不明な調査案",
+  "conditions": {"production_impact": "none", "cost_impact": "unknown", "exception_required": false, "permission_change_required": false, "rollback": "not_required"},
+  "evidence": [{"source": "synthetic query plan", "observation": "scan volume estimate is absent"}],
+  "unknowns": ["最大scan量と費用上限"],
+  "options": [
+    {"id": "estimate", "description": "費用見積りを取得してから再判断する", "tradeoff": "調査開始が遅れる"},
+    {"id": "bounded-sample", "description": "承認済み小規模sample案を人間が検討する", "tradeoff": "全期間を調査できない"}
+  ],
+  "next_actor": {"role": "cost owner", "action": "費用上限と許容するquery範囲を判断する"}
+}

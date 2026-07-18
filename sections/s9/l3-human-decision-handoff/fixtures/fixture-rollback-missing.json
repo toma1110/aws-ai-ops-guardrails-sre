@@ -1,0 +1,12 @@
+{
+  "scenario_id": "rollback-missing",
+  "summary": "rollback手順が未作成の変更案",
+  "conditions": {"production_impact": "possible", "cost_impact": "none", "exception_required": false, "permission_change_required": false, "rollback": "missing"},
+  "evidence": [{"source": "synthetic runbook review", "observation": "change steps exist but rollback steps are absent"}],
+  "unknowns": ["失敗時に元の状態へ戻せるか"],
+  "options": [
+    {"id": "prepare-rollback", "description": "rollback手順と検証結果を準備する", "tradeoff": "変更開始が遅れる"},
+    {"id": "cancel", "description": "変更案を取り下げる", "tradeoff": "期待する改善を得られない"}
+  ],
+  "next_actor": {"role": "change owner", "action": "rollback可能性と本番影響を確認して変更可否を判断する"}
+}

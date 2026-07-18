@@ -1,0 +1,12 @@
+{
+  "scenario_id": "exception-required",
+  "summary": "標準保持規則の例外を求める調査案",
+  "conditions": {"production_impact": "none", "cost_impact": "none", "exception_required": true, "permission_change_required": false, "rollback": "not_required"},
+  "evidence": [{"source": "synthetic policy comparison", "observation": "requested retention exceeds the documented standard"}],
+  "unknowns": ["例外ownerの承認と期限"],
+  "options": [
+    {"id": "standard", "description": "標準保持範囲に戻す", "tradeoff": "長期比較ができない"},
+    {"id": "exception-review", "description": "期限付き例外として審査する", "tradeoff": "追加reviewが必要"}
+  ],
+  "next_actor": {"role": "security owner", "action": "例外の可否、期限、追加制御を判断する"}
+}

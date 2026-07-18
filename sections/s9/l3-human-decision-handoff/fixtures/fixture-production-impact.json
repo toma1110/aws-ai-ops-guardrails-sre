@@ -1,0 +1,12 @@
+{
+  "scenario_id": "production-impact",
+  "summary": "本番serviceの設定変更を含む復旧案",
+  "conditions": {"production_impact": "confirmed", "cost_impact": "none", "exception_required": false, "permission_change_required": false, "rollback": "ready"},
+  "evidence": [{"source": "synthetic change plan", "observation": "target environment is marked production"}],
+  "unknowns": ["変更時間帯の利用者影響は未確認"],
+  "options": [
+    {"id": "wait", "description": "承認まで変更を停止する", "tradeoff": "復旧開始が遅れる"},
+    {"id": "readonly", "description": "ReadOnly調査だけを続ける", "tradeoff": "設定変更による復旧は行わない"}
+  ],
+  "next_actor": {"role": "incident commander", "action": "本番影響と変更可否を判断する"}
+}

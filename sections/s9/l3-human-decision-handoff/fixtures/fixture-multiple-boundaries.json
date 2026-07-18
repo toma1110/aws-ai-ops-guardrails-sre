@@ -1,0 +1,12 @@
+{
+  "scenario_id": "multiple-boundaries",
+  "summary": "本番影響、費用超過、例外、権限変更、rollback未検証が重なる案",
+  "conditions": {"production_impact": "possible", "cost_impact": "exceeds_approved_limit", "exception_required": true, "permission_change_required": true, "rollback": "unverified"},
+  "evidence": [{"source": "synthetic proposal review", "observation": "all five approval boundaries are marked unresolved"}],
+  "unknowns": ["影響範囲、費用承認、例外期限、権限scope、rollback成功条件"],
+  "options": [
+    {"id": "split", "description": "承認境界ごとに案を分割する", "tradeoff": "判断に時間がかかる"},
+    {"id": "stop", "description": "案全体を停止する", "tradeoff": "調査・復旧を進めない"}
+  ],
+  "next_actor": {"role": "incident commander", "action": "各ownerを招集し、実行せずに判断順序を決める"}
+}

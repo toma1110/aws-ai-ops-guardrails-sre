@@ -1,0 +1,12 @@
+{
+  "scenario_id": "permission-change",
+  "summary": "調査継続に追加IAM権限が必要な案",
+  "conditions": {"production_impact": "none", "cost_impact": "none", "exception_required": false, "permission_change_required": true, "rollback": "ready"},
+  "evidence": [{"source": "synthetic authorization result", "observation": "current ReadOnly role lacks the requested API permission"}],
+  "unknowns": ["追加権限の最小scopeと有効期限"],
+  "options": [
+    {"id": "deny-change", "description": "権限を変更せず既存証跡で報告する", "tradeoff": "追加事実を取得できない"},
+    {"id": "iam-review", "description": "IAM ownerへ最小権限案を送る", "tradeoff": "別の承認と検証が必要"}
+  ],
+  "next_actor": {"role": "IAM owner", "action": "追加権限の必要性と最小scopeを判断する"}
+}
