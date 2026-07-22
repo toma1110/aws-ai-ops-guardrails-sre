@@ -1,4 +1,4 @@
-# Section 9 / Lecture 3: 停止条件と引き継ぎを試す
+# S9: 人間判断の停止条件と引き継ぎをローカル検証する
 
 ## 目的
 
@@ -46,7 +46,13 @@ python --version
    python -m unittest discover -s tests -v
    ```
 
-5. `fixture-production-impact.json` などをcopyし、条件を1つ変更して再実行します。停止条件を消した場合だけ `CONTINUE_READONLY` になり、引き継ぎfieldを欠落・破損させた場合は `INVALID_INPUT` になることを確認します。
+5. fixture母集団を変更せず、既存のunit testを名前指定して、停止・安全な継続・不正入力の3経路を確認します。
+
+   ```console
+   python -m unittest tests.test_validation.HandoffValidationTests.test_production_impact_stops tests.test_validation.HandoffValidationTests.test_safe_readonly_can_continue tests.test_validation.HandoffValidationTests.test_incomplete_or_malformed_handoff_fails_closed -v
+   ```
+
+   この手順は `fixtures/` と `expected-results.json` を変更せず、既存test内の独立したin-memory copyだけを評価します。`test_production_impact_stops` は停止条件で `NEED_HUMAN_DECISION`、`test_safe_readonly_can_continue` は安全なReadOnlyで `CONTINUE_READONLY`、`test_incomplete_or_malformed_handoff_fails_closed` は引き継ぎfieldの欠落・破損で `INVALID_INPUT` になることを検証します。
 
 ## 期待結果
 
@@ -57,7 +63,7 @@ python --version
 
 ## Cost / cleanup
 
-この演習はローカルJSONを読むだけで、AWSへ接続せずresourceも作成しません。AWS費用は0で、cleanup対象はありません。必要なら自分で作成したcopyだけを利用者自身の判断で削除してください。この手順は削除commandを実行しません。
+この演習はローカルJSONを読むだけで、AWSへ接続せずresourceも作成しません。AWS費用は0で、手順中に一時fixtureを作成しないためcleanup対象はありません。この手順は削除commandを実行しません。
 
 ## Troubleshooting
 
@@ -65,7 +71,7 @@ python --version
 - `fixture population does not exactly match`: `fixtures/*.json` と `expected-results.json` のfilename集合を一致させます。
 - `INVALID_INPUT`: 表示されたreason codeを確認し、根拠、不明点、選択肢、next actor、条件の型を見直します。
 - 期待外に継続する: 5つの停止条件の値と、期待結果のreason codeを確認します。
-- 実環境で試したくなった: credential、account ID、本番ログを使わず、syntheticなcopyだけで検証します。
+- 実環境で試したくなった: credential、account ID、本番ログを使わず、この教材に含まれるsynthetic fixtureとunit testだけで検証します。
 
 ## 安全境界
 
