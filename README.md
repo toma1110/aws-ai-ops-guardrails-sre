@@ -65,6 +65,11 @@
 - Lecture 1: 概念解説（リポジトリ教材なし）
 - [Lecture 2・3: 正常系・異常系・禁止操作を試験し、導入前test packを完成させる](sections/s11/l3-pre-deployment-test-pack/README.md) — permission不足、機密ログ、停止handoff、根拠提示を6件のsynthetic fixtureと17件のunit testで検証します。
 
+### Section 12: 総合ハンズオン
+
+- Lecture 1: 概念解説（リポジトリ教材なし）
+- [Lecture 2・3: ReadOnly導入設計を統合し、導入packageを最終検証する](sections/s12/l2-l3-readonly-adoption-integration/README.md) — Courseの12成果物を接続し、欠落、参照切れ、依存関係、安全境界をlocal validatorと19件のunit testで検証します。
+
 ## 動作環境
 
 演習ごとに要件は異なります。現在収録しているローカル演習では、Python 3.10以上とMarkdownを編集できる環境を使用します。

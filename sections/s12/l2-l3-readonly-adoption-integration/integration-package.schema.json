@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/s12-integration-package-v1.json",
+  "title": "S12 local ReadOnly integration package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "case_id", "environment", "safety_boundary", "artifacts", "decision"],
+  "properties": {
+    "schema": {"const": "s12-integration-package-v1"},
+    "case_id": {"type": "string", "minLength": 1},
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "data_source", "aws_account_id", "credentials"],
+      "properties": {
+        "kind": {"const": "synthetic-local"},
+        "data_source": {"const": "course-fixtures-only"},
+        "aws_account_id": {"type": "null"},
+        "credentials": {"const": false}
+      }
+    },
+    "safety_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["aws_connection", "iam_policy_application", "resource_change", "external_send"],
+      "properties": {
+        "aws_connection": {"const": false},
+        "iam_policy_application": {"const": false},
+        "resource_change": {"const": false},
+        "external_send": {"const": false}
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "evidence_path", "depends_on", "result"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^D(0[1-9]|1[0-2])$"},
+          "status": {"const": "ready"},
+          "evidence_path": {"type": "string", "minLength": 1},
+          "depends_on": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"type": "string", "pattern": "^D(0[1-9]|1[0-2])$"}
+          },
+          "result": {"const": "pass"}
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome", "production_change_authorized", "next_actor", "basis_ids"],
+      "properties": {
+        "outcome": {"const": "READY_FOR_READONLY_PILOT_REVIEW"},
+        "production_change_authorized": {"const": false},
+        "next_actor": {"const": "change owner and security owner"},
+        "basis_ids": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^D(0[1-9]|1[0-2])$"}
+        }
+      }
+    }
+  }
+}

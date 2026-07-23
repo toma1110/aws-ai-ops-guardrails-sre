@@ -1,0 +1,36 @@
+{
+  "schema": "s12-integration-package-v1",
+  "case_id": "SYNTHETIC-SRE-PILOT-001",
+  "environment": {
+    "kind": "synthetic-local",
+    "data_source": "course-fixtures-only",
+    "aws_account_id": null,
+    "credentials": false
+  },
+  "safety_boundary": {
+    "aws_connection": false,
+    "iam_policy_application": false,
+    "resource_change": false,
+    "external_send": false
+  },
+  "artifacts": [
+    {"id":"D01","status":"ready","evidence_path":"sections/s1/l3-readonly-adoption-scope/examples/completed-adoption-scope.md","depends_on":[],"result":"pass"},
+    {"id":"D02","status":"ready","evidence_path":"sections/s2/l3-mcp-preconnection-checklist/examples/completed-mcp-preconnection-checklist.md","depends_on":["D01"],"result":"pass"},
+    {"id":"D03","status":"ready","evidence_path":"sections/s3/l3-ai-work-classification/examples/completed-ai-work-classification.md","depends_on":["D01"],"result":"pass"},
+    {"id":"D04","status":"ready","evidence_path":"sections/s5/l3-readonly-iam-guardrails/examples/iam-guardrail-package/role-session-boundary.json","depends_on":["D01","D02","D03"],"result":"pass"},
+    {"id":"D05","status":"ready","evidence_path":"sections/s5/l3-readonly-iam-guardrails/examples/iam-guardrail-package/iam-policy.json","depends_on":["D03","D04"],"result":"pass"},
+    {"id":"D06","status":"ready","evidence_path":"sections/s6/l3-cloudtrail-audit/audit-checklist.md","depends_on":["D04","D05"],"result":"pass"},
+    {"id":"D07","status":"ready","evidence_path":"sections/s7/l3-incident-investigation/fixtures/expected-investigation.json","depends_on":["D01","D06"],"result":"pass"},
+    {"id":"D08","status":"ready","evidence_path":"sections/s8/l3-ai-execution-log-validation/ai-execution-log.schema.json","depends_on":["D06","D07"],"result":"pass"},
+    {"id":"D09","status":"ready","evidence_path":"sections/s9/l3-human-decision-handoff/expected-results.json","depends_on":["D03","D07","D08"],"result":"pass"},
+    {"id":"D10","status":"ready","evidence_path":"sections/s10/l3-stakeholder-adoption-review/generated/introduction.md","depends_on":["D01","D05","D09"],"result":"pass"},
+    {"id":"D11","status":"ready","evidence_path":"sections/s11/l3-pre-deployment-test-pack/evaluation-cases.json","depends_on":["D02","D03","D05","D06","D07","D08","D09"],"result":"pass"},
+    {"id":"D12","status":"ready","evidence_path":"sections/s12/l2-l3-readonly-adoption-integration/readonly-adoption-checklist.md","depends_on":["D01","D02","D03","D04","D05","D06","D07","D08","D09","D10","D11"],"result":"pass"}
+  ],
+  "decision": {
+    "outcome": "READY_FOR_READONLY_PILOT_REVIEW",
+    "production_change_authorized": false,
+    "next_actor": "change owner and security owner",
+    "basis_ids": ["D01","D02","D03","D04","D05","D06","D07","D08","D09","D10","D11","D12"]
+  }
+}

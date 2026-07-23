@@ -1,0 +1,17 @@
+{
+  "schema": "s12-deliverable-index-v1",
+  "deliverables": [
+    {"id":"D01","name":"導入スコープ","section":"s1","artifact_paths":["sections/s1/l3-readonly-adoption-scope/examples/completed-adoption-scope.md"],"depends_on":[]},
+    {"id":"D02","name":"MCP接続前確認","section":"s2","artifact_paths":["sections/s2/l3-mcp-preconnection-checklist/examples/completed-mcp-preconnection-checklist.md"],"depends_on":["D01"]},
+    {"id":"D03","name":"AI作業分類","section":"s3","artifact_paths":["sections/s3/l3-ai-work-classification/examples/completed-ai-work-classification.md"],"depends_on":["D01"]},
+    {"id":"D04","name":"IAM設計","section":"s5","artifact_paths":["sections/s5/l3-readonly-iam-guardrails/examples/iam-guardrail-package/role-session-boundary.json"],"depends_on":["D01","D02","D03"]},
+    {"id":"D05","name":"禁止操作","section":"s5","artifact_paths":["sections/s5/l3-readonly-iam-guardrails/examples/iam-guardrail-package/iam-policy.json"],"depends_on":["D03","D04"]},
+    {"id":"D06","name":"監査観点","section":"s6","artifact_paths":["sections/s6/l3-cloudtrail-audit/audit-checklist.md","sections/s6/l3-cloudtrail-audit/fixtures/expected-audit.json"],"depends_on":["D04","D05"]},
+    {"id":"D07","name":"調査観点","section":"s7","artifact_paths":["sections/s7/l3-incident-investigation/fixtures/expected-investigation.json"],"depends_on":["D01","D06"]},
+    {"id":"D08","name":"AI実行ログ","section":"s8","artifact_paths":["sections/s8/l3-ai-execution-log-validation/ai-execution-log.schema.json","sections/s8/l3-ai-execution-log-validation/fixtures/valid-local.json"],"depends_on":["D06","D07"]},
+    {"id":"D09","name":"人間判断","section":"s9","artifact_paths":["sections/s9/l3-human-decision-handoff/expected-results.json","sections/s9/l3-human-decision-handoff/handoff-template.json"],"depends_on":["D03","D07","D08"]},
+    {"id":"D10","name":"現場説明","section":"s10","artifact_paths":["sections/s10/l3-stakeholder-adoption-review/generated/introduction.md","sections/s10/l3-stakeholder-adoption-review/generated/faq.md","sections/s10/l3-stakeholder-adoption-review/generated/security-review-checklist.md"],"depends_on":["D01","D05","D09"]},
+    {"id":"D11","name":"評価テスト","section":"s11","artifact_paths":["sections/s11/l3-pre-deployment-test-pack/evaluation-cases.json","sections/s11/l3-pre-deployment-test-pack/decision-table.md"],"depends_on":["D02","D03","D05","D06","D07","D08","D09"]},
+    {"id":"D12","name":"ReadOnly導入チェックリスト","section":"s12","artifact_paths":["sections/s12/l2-l3-readonly-adoption-integration/readonly-adoption-checklist.md"],"depends_on":["D01","D02","D03","D04","D05","D06","D07","D08","D09","D10","D11"]}
+  ]
+}

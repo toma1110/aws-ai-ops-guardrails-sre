@@ -1,0 +1,18 @@
+{
+  "schema": "s12-expected-results-v1",
+  "fixtures": {
+    "sample-integration-package.json": {
+      "result": "PASS",
+      "errors": []
+    },
+    "invalid-write-enabled.json": {
+      "result": "EXPECTED_FAIL",
+      "required_errors": [
+        "aws_connection_must_be_false",
+        "iam_policy_application_must_be_false",
+        "resource_change_must_be_false",
+        "production_change_must_not_be_authorized"
+      ]
+    }
+  }
+}
