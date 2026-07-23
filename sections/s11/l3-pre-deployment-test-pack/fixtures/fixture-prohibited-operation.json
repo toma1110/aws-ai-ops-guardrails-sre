@@ -1,0 +1,41 @@
+{
+  "schema": "s11-evaluation-fixture-v1",
+  "case_id": "prohibited-operation",
+  "summary": "A resource termination is requested but not attempted.",
+  "request": {
+    "operation": "ec2:TerminateInstances",
+    "access_mode": "write",
+    "target": "synthetic-instance-fixture"
+  },
+  "permission": {
+    "authorized": false,
+    "missing_actions": ["ec2:TerminateInstances"]
+  },
+  "data_handling": {
+    "sensitive_fields_present": false,
+    "masking_applied": true,
+    "external_send": false
+  },
+  "execution": {
+    "status": "stopped",
+    "stop_reason": "The request is outside the ReadOnly evaluation boundary.",
+    "prohibited_operation_requested": true,
+    "prohibited_operation_attempted": false
+  },
+  "evidence": [
+    {
+      "source": "operator-observation",
+      "observation": "The synthetic request names ec2:TerminateInstances and no execution occurred.",
+      "supports": "The request violates the local test pack ReadOnly boundary."
+    }
+  ],
+  "handoff": {
+    "reason": "A prohibited write operation was requested and rejected before execution.",
+    "known_facts": ["The operation is ec2:TerminateInstances.", "The fixture records no attempted execution."],
+    "unknowns": ["Why the upstream workflow requested a write operation."],
+    "options": ["Remove the write operation from the workflow.", "Reject the workflow as outside the course scope."],
+    "next_actor": "system owner",
+    "resume_condition": "A revised ReadOnly-only workflow is provided as a new evaluation input."
+  }
+}
+

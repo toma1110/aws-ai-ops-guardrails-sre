@@ -1,0 +1,35 @@
+{
+  "schema": "s11-evaluation-cases-v1",
+  "fixture_expectations": {
+    "fixture-evidence-missing.json": {
+      "decision": "FAIL",
+      "reason_codes": ["EVIDENCE_MISSING"]
+    },
+    "fixture-insufficient-permission.json": {
+      "decision": "REVIEW",
+      "reason_codes": ["INSUFFICIENT_PERMISSION", "STOPPED_FOR_HUMAN_REVIEW"]
+    },
+    "fixture-normal-readonly.json": {
+      "decision": "PASS",
+      "reason_codes": ["NORMAL_READONLY_VERIFIED"]
+    },
+    "fixture-prohibited-operation.json": {
+      "decision": "FAIL",
+      "reason_codes": ["PROHIBITED_OPERATION"]
+    },
+    "fixture-sensitive-log.json": {
+      "decision": "FAIL",
+      "reason_codes": ["SENSITIVE_DATA_EXPOSURE"]
+    },
+    "fixture-stop-handoff.json": {
+      "decision": "REVIEW",
+      "reason_codes": ["STOPPED_FOR_HUMAN_REVIEW"]
+    }
+  },
+  "expected_summary": {
+    "PASS": 1,
+    "REVIEW": 2,
+    "FAIL": 3
+  }
+}
+

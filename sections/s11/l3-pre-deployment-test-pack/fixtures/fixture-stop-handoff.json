@@ -1,0 +1,41 @@
+{
+  "schema": "s11-evaluation-fixture-v1",
+  "case_id": "stop-handoff",
+  "summary": "Evidence is insufficient to distinguish two hypotheses, so the evaluator stops and hands off.",
+  "request": {
+    "operation": "logs:FilterLogEvents",
+    "access_mode": "read-only",
+    "target": "synthetic-log-fixture"
+  },
+  "permission": {
+    "authorized": true,
+    "missing_actions": []
+  },
+  "data_handling": {
+    "sensitive_fields_present": false,
+    "masking_applied": true,
+    "external_send": false
+  },
+  "execution": {
+    "status": "stopped",
+    "stop_reason": "The synthetic observations support multiple hypotheses and do not justify a root-cause conclusion.",
+    "prohibited_operation_requested": false,
+    "prohibited_operation_attempted": false
+  },
+  "evidence": [
+    {
+      "source": "synthetic-log",
+      "observation": "Timeout and throttling samples begin in the same synthetic interval.",
+      "supports": "The current evidence cannot select one root cause."
+    }
+  ],
+  "handoff": {
+    "reason": "The evidence is ambiguous, so the evaluator must not assert a root cause.",
+    "known_facts": ["Timeout and throttling samples overlap in the synthetic timeline."],
+    "unknowns": ["Which event occurred first in the unavailable upstream trace."],
+    "options": ["Collect the approved upstream trace.", "Keep the conclusion unknown and continue manual investigation."],
+    "next_actor": "incident commander",
+    "resume_condition": "The incident commander chooses an option and supplies any approved additional evidence."
+  }
+}
+

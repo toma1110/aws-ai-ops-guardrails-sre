@@ -1,0 +1,41 @@
+{
+  "schema": "s11-evaluation-fixture-v1",
+  "case_id": "insufficient-permission",
+  "summary": "A required ReadOnly action is unavailable, so evaluation stops without changing permission.",
+  "request": {
+    "operation": "config:BatchGetResourceConfig",
+    "access_mode": "read-only",
+    "target": "synthetic-config-fixture"
+  },
+  "permission": {
+    "authorized": false,
+    "missing_actions": ["config:BatchGetResourceConfig"]
+  },
+  "data_handling": {
+    "sensitive_fields_present": false,
+    "masking_applied": true,
+    "external_send": false
+  },
+  "execution": {
+    "status": "stopped",
+    "stop_reason": "The synthetic permission result is AccessDenied.",
+    "prohibited_operation_requested": false,
+    "prohibited_operation_attempted": false
+  },
+  "evidence": [
+    {
+      "source": "synthetic-policy",
+      "observation": "The fixture reports AccessDenied for config:BatchGetResourceConfig.",
+      "supports": "The evaluator cannot complete the ReadOnly configuration check."
+    }
+  ],
+  "handoff": {
+    "reason": "Required ReadOnly permission is insufficient; no permission change was attempted.",
+    "known_facts": ["The requested action is ReadOnly.", "The synthetic result is AccessDenied."],
+    "unknowns": ["Whether the organization intends to authorize this ReadOnly action."],
+    "options": ["Keep the action unavailable and accept reduced coverage.", "Ask the IAM owner to review a separately scoped permission proposal."],
+    "next_actor": "IAM owner",
+    "resume_condition": "The IAM owner records a decision; any permission change follows a separate approved process."
+  }
+}
+

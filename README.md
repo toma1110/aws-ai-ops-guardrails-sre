@@ -60,6 +60,11 @@
 - Lecture 1・2: 概念解説（リポジトリ教材なし）
 - [Lecture 3: 導入説明とreview資料を作る](sections/s10/l3-stakeholder-adoption-review/README.md) — 変更、ログ、誤回答責任、API接続の懸念と、既存運用を維持する責任分界を説明・FAQ・security review資料として作り、ローカルで検証します。
 
+### Section 11: 導入前評価テスト
+
+- Lecture 1: 概念解説（リポジトリ教材なし）
+- [Lecture 2・3: 正常系・異常系・禁止操作を試験し、導入前test packを完成させる](sections/s11/l3-pre-deployment-test-pack/README.md) — permission不足、機密ログ、停止handoff、根拠提示を6件のsynthetic fixtureと17件のunit testで検証します。
+
 ## 動作環境
 
 演習ごとに要件は異なります。現在収録しているローカル演習では、Python 3.10以上とMarkdownを編集できる環境を使用します。

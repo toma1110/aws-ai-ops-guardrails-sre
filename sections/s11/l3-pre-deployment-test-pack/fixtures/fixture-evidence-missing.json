@@ -1,0 +1,28 @@
+{
+  "schema": "s11-evaluation-fixture-v1",
+  "case_id": "evidence-missing",
+  "summary": "The request completed but no evidence supports the claimed result.",
+  "request": {
+    "operation": "logs:FilterLogEvents",
+    "access_mode": "read-only",
+    "target": "synthetic-log-fixture"
+  },
+  "permission": {
+    "authorized": true,
+    "missing_actions": []
+  },
+  "data_handling": {
+    "sensitive_fields_present": false,
+    "masking_applied": true,
+    "external_send": false
+  },
+  "execution": {
+    "status": "completed",
+    "stop_reason": null,
+    "prohibited_operation_requested": false,
+    "prohibited_operation_attempted": false
+  },
+  "evidence": [],
+  "handoff": null
+}
+
