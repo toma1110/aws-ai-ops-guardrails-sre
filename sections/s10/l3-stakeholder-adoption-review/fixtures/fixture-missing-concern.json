@@ -1,0 +1,13 @@
+{
+  "package_id": "missing-api-concern",
+  "concerns": [
+    {"id": "change_control", "statement": "変更が心配", "control": "変更禁止", "evidence": "scope", "owner": "operations"},
+    {"id": "log_handling", "statement": "ログが心配", "control": "masking review", "evidence": "data flow", "owner": "security"},
+    {"id": "wrong_answer_accountability", "statement": "責任が心配", "control": "人間が判断", "evidence": "RACI", "owner": "system owner"}
+  ],
+  "adoption": {"role": "readonly_investigation_assistance", "preserved_processes": ["approval", "incident_response", "release"], "prohibited_actions": ["production_change", "release", "automatic_recovery", "iam_change", "delete"], "escalation_owner": "system owner"},
+  "responsibilities": [],
+  "introduction": {},
+  "faq": [],
+  "security_review": []
+}

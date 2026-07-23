@@ -1,0 +1,14 @@
+{
+  "package_id": "unsafe-process-replacement",
+  "concerns": [
+    {"id": "change_control", "statement": "変更", "control": "禁止", "evidence": "scope", "owner": "operations"},
+    {"id": "log_handling", "statement": "ログ", "control": "review", "evidence": "flow", "owner": "security"},
+    {"id": "wrong_answer_accountability", "statement": "責任", "control": "人間判断", "evidence": "RACI", "owner": "owner"},
+    {"id": "api_connectivity", "statement": "接続", "control": "別review", "evidence": "review", "owner": "security"}
+  ],
+  "adoption": {"role": "autonomous_operations", "preserved_processes": ["approval", "incident_response"], "prohibited_actions": ["production_change"], "escalation_owner": "system owner"},
+  "responsibilities": [],
+  "introduction": {},
+  "faq": [],
+  "security_review": []
+}

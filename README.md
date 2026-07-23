@@ -55,6 +55,11 @@
 - Lecture 1・2: 概念解説（リポジトリ教材なし）
 - [Lecture 3: 停止条件と引き継ぎを試す](sections/s9/l3-human-decision-handoff/README.md) — 本番影響、費用、例外、権限変更、rollbackの境界を7件のローカルfixtureで判定し、`NEED_HUMAN_DECISION` の引き継ぎを検証します。
 
+### Section 10: 現場反発を抑える導入設計
+
+- Lecture 1・2: 概念解説（リポジトリ教材なし）
+- [Lecture 3: 導入説明とreview資料を作る](sections/s10/l3-stakeholder-adoption-review/README.md) — 変更、ログ、誤回答責任、API接続の懸念と、既存運用を維持する責任分界を説明・FAQ・security review資料として作り、ローカルで検証します。
+
 ## 動作環境
 
 演習ごとに要件は異なります。現在収録しているローカル演習では、Python 3.10以上とMarkdownを編集できる環境を使用します。

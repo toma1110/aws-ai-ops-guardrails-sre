@@ -1,0 +1,14 @@
+{
+  "fixture_expectations": {
+    "fixture-complete.json": {"decision": "READY_FOR_STAKEHOLDER_REVIEW", "reason_codes": []},
+    "fixture-missing-concern.json": {"decision": "INVALID_PACKAGE", "reason_codes": ["concern_ids_invalid", "responsibility_roles_invalid", "introduction_invalid", "faq_concern_ids_invalid", "review_check_ids_invalid"]},
+    "fixture-replaces-release.json": {"decision": "INVALID_PACKAGE", "reason_codes": ["concern_safety_control_invalid:change_control", "concern_safety_control_invalid:log_handling", "concern_safety_control_invalid:wrong_answer_accountability", "concern_safety_control_invalid:api_connectivity", "adoption_role_invalid", "preserved_processes_invalid", "prohibited_actions_invalid", "responsibility_roles_invalid", "introduction_invalid", "faq_concern_ids_invalid", "review_check_ids_invalid"]}
+  },
+  "generated_package": {
+    "schema": "s10-expected-results-v1",
+    "concern_ids": ["CHANGE", "LOG", "ACCOUNTABILITY", "API_CONNECTION"],
+    "output_files": ["introduction.md", "faq.md", "security-review-checklist.md"],
+    "required_preserved_processes": ["既存のchange approval", "既存のincident response", "既存のrelease process"],
+    "result": "pass"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "s10-introduction-input-v1",
+  "section_id": "s10",
+  "scenario": {
+    "organization": "Example Operations Team",
+    "purpose": "既存運用の前段に、ReadOnlyの調査・整理・報告補助を追加する",
+    "pilot_scope": "syntheticな障害情報を使うローカル評価",
+    "decision_owner": "incident commander",
+    "security_owner": "security reviewer"
+  },
+  "constraints": {
+    "aws_connection": false,
+    "credential_required": false,
+    "production_change": false,
+    "existing_approval_preserved": true,
+    "incident_response_preserved": true,
+    "release_process_preserved": true
+  },
+  "concerns": [
+    {
+      "id": "CHANGE",
+      "question": "AIが本番変更まで実行しないか",
+      "boundary": "AIは調査候補と根拠を整理するだけで、変更、復旧、release、削除を実行しない",
+      "owner_role": "change approver",
+      "evidence_required": "変更権限を持たない設計と、既存承認フローを維持する運用手順",
+      "faq_answer": "本番変更は行いません。提案は既存の変更承認へ渡し、人間が判断します。",
+      "review_check": "AIの役割が調査補助に限定され、変更操作が既存承認を迂回しない"
+    },
+    {
+      "id": "LOG",
+      "question": "入力・出力ログに機密情報を残しすぎないか",
+      "boundary": "synthetic dataで評価し、実運用では必要最小限の記録、masking、保持期間、外部送信境界を事前に決める",
+      "owner_role": "security reviewer",
+      "evidence_required": "記録項目、masking規則、保持期間、閲覧権限、外部送信先のreview結果",
+      "faq_answer": "ログは無制限に保存しません。記録目的、masking、保持期間、閲覧者、外部送信境界をsecurity reviewで決めます。",
+      "review_check": "ログの目的、最小化、masking、保持、閲覧権限、外部送信境界が明記されている"
+    },
+    {
+      "id": "ACCOUNTABILITY",
+      "question": "AIが誤った回答をした場合に誰が責任を持つか",
+      "boundary": "AI出力を確定事実や承認として扱わず、根拠と不明点を添えて人間のdecision ownerへ渡す",
+      "owner_role": "incident commander",
+      "evidence_required": "根拠、不明点、判断者、エスカレーション先を含む報告形式",
+      "faq_answer": "AIは判断主体ではありません。根拠と不明点を示し、incident commanderが既存手順で判断します。",
+      "review_check": "誤回答時の判断者、検証方法、訂正、エスカレーションの責任分界が明記されている"
+    },
+    {
+      "id": "API_CONNECTION",
+      "question": "APIへ接続するだけで安全と誤解しないか",
+      "boundary": "この演習ではAWSへ接続せず、実運用のAPI接続前にReadOnly範囲、最小権限、監査、機密情報、prompt injection、費用をreviewする",
+      "owner_role": "security reviewer",
+      "evidence_required": "接続前checklistと、許可API、拒否操作、監査方法、停止条件のreview結果",
+      "faq_answer": "接続手段は安全性の保証ではありません。接続前に権限、監査、機密情報、prompt injection、費用、停止条件を確認します。",
+      "review_check": "接続前reviewがあり、接続方法と権限・監査・承認が別の境界として扱われている"
+    }
+  ]
+}

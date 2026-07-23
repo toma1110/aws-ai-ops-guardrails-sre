@@ -1,0 +1,37 @@
+{
+  "package_id": "sample-readonly-investigation-assistant",
+  "concerns": [
+    {"id": "change_control", "statement": "AIによる本番変更が心配", "control": "調査補助だけを許可し変更操作を禁止する", "evidence": "許可・禁止操作一覧", "owner": "operations owner"},
+    {"id": "log_handling", "statement": "ログの外部送信と保持が心配", "control": "送信範囲、マスキング、保持、閲覧権限を事前reviewする", "evidence": "data flowとlog handling設計", "owner": "security"},
+    {"id": "wrong_answer_accountability", "statement": "誤回答時の責任が曖昧になる", "control": "AI回答を判断材料に限定し最終判断者を人間に固定する", "evidence": "責任分界表", "owner": "system owner"},
+    {"id": "api_connectivity", "statement": "API接続だけで安全と誤解される", "control": "identity、最小権限、監査、停止条件を別々にreviewする", "evidence": "接続前review記録", "owner": "security"}
+  ],
+  "adoption": {
+    "role": "readonly_investigation_assistance",
+    "preserved_processes": ["approval", "incident_response", "release"],
+    "prohibited_actions": ["production_change", "release", "automatic_recovery", "iam_change", "delete"],
+    "escalation_owner": "incident commander or system owner"
+  },
+  "responsibilities": [
+    {"role": "ai_assistant", "accountable_for": "根拠付きの調査候補を提示する", "not_accountable_for": "承認、変更、最終判断"},
+    {"role": "operator", "accountable_for": "根拠を確認して既存手順で対応する", "not_accountable_for": "security例外の単独承認"},
+    {"role": "security", "accountable_for": "接続、権限、data、監査controlをreviewする", "not_accountable_for": "incident command"},
+    {"role": "system_owner", "accountable_for": "導入可否と業務上の最終判断を行う", "not_accountable_for": "AI出力の無検証採用"}
+  ],
+  "introduction": {"audience": "operations and security", "message": "既存運用を維持したReadOnly調査補助を小さく導入する", "limitations": "接続手段やAI回答は安全性、承認、正しさを保証しない"},
+  "faq": [
+    {"concern_id": "change_control", "answer": "変更は禁止し、人間の既存承認を維持する", "owner": "operations owner"},
+    {"concern_id": "log_handling", "answer": "送信・保持・maskingをsecurityが事前reviewする", "owner": "security"},
+    {"concern_id": "wrong_answer_accountability", "answer": "system ownerが根拠を確認して最終判断する", "owner": "system owner"},
+    {"concern_id": "api_connectivity", "answer": "接続可否と安全性を分けてreviewする", "owner": "security"}
+  ],
+  "security_review": [
+    {"id": "scope", "status": "pass", "evidence": "許可・禁止操作一覧", "owner": "operations owner"},
+    {"id": "identity_permission", "status": "review", "evidence": "専用identityと最小権限の設計案", "owner": "security"},
+    {"id": "data_log", "status": "review", "evidence": "data flowとmasking設計案", "owner": "security"},
+    {"id": "prompt_injection", "status": "review", "evidence": "信頼しない入力と停止条件のtest計画", "owner": "security"},
+    {"id": "auditability", "status": "review", "evidence": "AI実行IDとAPI監査の相関設計案", "owner": "operations owner"},
+    {"id": "human_approval", "status": "pass", "evidence": "既存承認processと責任分界表", "owner": "system owner"},
+    {"id": "incident_exit", "status": "review", "evidence": "停止、連絡、無効化、既存運用への復帰手順案", "owner": "incident commander"}
+  ]
+}
