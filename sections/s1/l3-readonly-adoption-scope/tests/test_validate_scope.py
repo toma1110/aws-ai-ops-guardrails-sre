@@ -37,6 +37,38 @@ class ValidateScopeTests(unittest.TestCase):
             self.assertNotIn("人間へ渡す情報", text)
             self.assertNotIn("人間へ引き継ぐ", text)
 
+    def test_readme_explains_validation_architecture_before_code_steps(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        architecture_heading = "## なぜValidation Scriptを書くのか"
+        self.assertLess(readme.index(architecture_heading), readme.index("## セットアップ"))
+        for required_text in (
+            "AWSやクラウドを操作するスクリプトではありません",
+            "組織のルールやAI運用ポリシー",
+            "Policy as Code",
+            "本番向け完成品ではありません",
+            "AIが成果物を生成",
+            "Validation Script（品質チェック）",
+            "ルールを満たしているか確認",
+            "Human Review",
+            "本番利用",
+            "最終判断は必ず人間が行います",
+            "Azure",
+            "Google Cloud",
+            "GitHub",
+            "社内システム",
+            "AWSへ接続しないため、AWS Regionの選択や設定も不要です",
+        ):
+            self.assertIn(required_text, readme)
+        self.assertLess(
+            readme.index("AIが成果物を生成"),
+            readme.index("Validation Script（品質チェック）"),
+        )
+        self.assertLess(
+            readme.index("Validation Script（品質チェック）"),
+            readme.index("Human Review"),
+        )
+        self.assertLess(readme.index("Human Review"), readme.index("本番利用"))
+
     def test_missing_decision_class_is_invalid(self) -> None:
         text = (ROOT / "examples" / "completed-adoption-scope.md").read_text(
             encoding="utf-8"
