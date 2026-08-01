@@ -46,7 +46,7 @@ python --version
    python -m unittest discover -s tests -v
    ```
 
-5. fixture母集団を変更せず、既存のunit testを名前指定して、停止・安全な継続・不正入力の3経路を確認します。
+5. 用意された練習データを変更せず、既存のunit testを名前指定して、停止・安全な継続・不正入力の3経路を確認します。
 
    ```console
    python -m unittest tests.test_validation.HandoffValidationTests.test_production_impact_stops tests.test_validation.HandoffValidationTests.test_safe_readonly_can_continue tests.test_validation.HandoffValidationTests.test_incomplete_or_malformed_handoff_fails_closed -v

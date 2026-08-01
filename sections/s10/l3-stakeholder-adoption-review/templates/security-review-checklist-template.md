@@ -10,6 +10,6 @@
 
 {{CHECKLIST_ITEMS}}
 
-## review evidence
+## 確認根拠
 
 {{EVIDENCE_ITEMS}}

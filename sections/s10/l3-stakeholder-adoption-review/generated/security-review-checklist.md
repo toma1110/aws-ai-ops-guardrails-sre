@@ -13,7 +13,7 @@
 - [ ] **ACCOUNTABILITY**: 誤回答時の判断者、検証方法、訂正、エスカレーションの責任分界が明記されている（owner: incident commander）
 - [ ] **API_CONNECTION**: 接続前reviewがあり、接続方法と権限・監査・承認が別の境界として扱われている（owner: security reviewer）
 
-## review evidence
+## 確認根拠
 
 - [ ] **CHANGE**: 変更権限を持たない設計と、既存承認フローを維持する運用手順
 - [ ] **LOG**: 記録項目、masking規則、保持期間、閲覧権限、外部送信先のreview結果

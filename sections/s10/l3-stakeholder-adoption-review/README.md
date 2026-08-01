@@ -31,7 +31,7 @@ python --version
    python validate_package.py --input stakeholder-input.json --templates templates --output generated --expected expected-results.json
    ```
 
-6. fixture母集団と期待結果を検証します。
+6. 用意された3件の練習データと期待結果を検証します。
 
    ```console
    python validate_adoption_package.py --fixtures fixtures --expected expected-results.json

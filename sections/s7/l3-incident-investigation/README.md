@@ -30,7 +30,7 @@ python --version
 4. `ALB-001`、`EC2-001`、`RDS-001` と各サービスのメトリクスを同じUTC時刻で並べます。
    validatorは各pairのexpected namespace、metric name、service、resource、timestamp完全一致を検査します。resourceや時刻が異なる観測を同じ状態の証拠へ流用しません。
 5. [レポートテンプレート](templates/investigation-report.md) の事実、仮説、不明点、人間判断を別々に埋めます。事実と仮説には必ず対応する `evidence_id` を付けます。
-6. validatorを実行し、生成結果をexact expected JSONと比較します。
+6. validatorを実行し、生成結果を用意された期待結果と比較します。
 
 ```console
 python scripts/investigate_incident.py
